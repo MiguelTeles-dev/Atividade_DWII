@@ -43,6 +43,14 @@ if ($id != 0)
                 <input type="text" name="altura" id="altura" value="<?php if ($id != 0)
                     echo $dados['altura']; ?>"><br>
 
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" value="<?php if ($id != 0)
+                    echo $dados['email']; ?>"><br>
+
+                <label for="telefone">Telefone</label>
+                <input type="text" name="telefone" id="telefone" value="<?php if ($id != 0)
+                    echo $dados['telefone']; ?>"><br>
+
                 <input class="primary" type="submit" name="acao" id="acao" value="<?php if ($id == 0)
                     echo "Salvar";
                 else

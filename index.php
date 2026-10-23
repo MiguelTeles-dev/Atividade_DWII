@@ -31,6 +31,8 @@
                 <th>Nome</th>
                 <th>Altura</th>
                 <th>Peso</th>
+                <th>Email</th>
+                <th>Telefone</th>
                 <th>Alterar</th>
                 <th>Excluir</th>
             </tr>
@@ -40,6 +42,8 @@
                   <td>{$key['nome']}</td>
                   <td>{$key['altura']}</td>
                   <td>{$key['peso']}</td>
+                  <td>{$key['email']}</td>
+                  <td>{$key['telefone']}</td>
                   <td align='center'><a role='button' href='pessoa_cad.php?id=" . $key['id'] . "'>A</a></td>
                   <td align='center'><a role='button' href=javascript:excluirRegistro('pessoa_acao.php?acao=excluir&id=" . $key['id'] . "');>E</a></td>
               </tr>";

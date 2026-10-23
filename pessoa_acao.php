@@ -46,7 +46,9 @@ function tela2array()
         'id' => isset($_POST['id']) ? $_POST['id'] : date("YmdHis"),
         'nome' => isset($_POST['nome']) ? $_POST['nome'] : "",
         'peso' => isset($_POST['peso']) ? $_POST['peso'] : "",
-        'altura' => isset($_POST['altura']) ? $_POST['altura'] : ""
+        'altura' => isset($_POST['altura']) ? $_POST['altura'] : "",
+        'email' => isset($_POST['email']) ? $_POST['email'] : "",
+        'telefone' => isset($_POST['telefone']) ? $_POST['telefone'] : ""
     );
     if ($novo['id'] == "0") {
         $novo['id'] = date("YmdHis");
@@ -66,6 +68,8 @@ function array2objeto($array_dados)
     $elemento->nome = $array_dados['nome'];
     $elemento->peso = $array_dados['peso'];
     $elemento->altura = $array_dados['altura'];
+    $elemento->email = $array_dados['email'];
+    $elemento->telefone = $array_dados['telefone'];
 
     return $elemento;
 }
@@ -81,7 +85,9 @@ function objeto2array($elemento)
         'id' => (string) $elemento->id,
         'nome' => (string) $elemento->nome,
         'peso' => (string) $elemento->peso,
-        'altura' => (string) $elemento->altura
+        'altura' => (string) $elemento->altura,
+        'email' => (string) $elemento->email,
+        'telefone' => (string) $elemento->telefone
     );
 
     return $dado;

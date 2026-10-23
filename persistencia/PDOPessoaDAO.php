@@ -48,13 +48,15 @@ class PDOPessoaDAO extends PessoaDAO
             $this->conn = new PDO('sqlite:' . __DIR__ . '/pessoas.db');
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $this->conn->prepare('INSERT INTO pessoa (nome, peso, altura) 
-                 VALUES(:nome, :peso, :altura)');
+            $stmt = $this->conn->prepare('INSERT INTO pessoa (nome, peso, altura, email, telefone) 
+                 VALUES(:nome, :peso, :altura, :email, :telefone)');
             $stmt->execute(
                 array(
                     ':nome' => $objeto->nome,
                     ':altura' => $objeto->altura,
-                    ':peso' => $objeto->peso
+                    ':peso' => $objeto->peso,
+                    ':email' =>$objeto->email,
+                    ':telefone' =>$objeto->telefone
                 )
             );
             print $stmt->rowCount();
@@ -74,13 +76,15 @@ class PDOPessoaDAO extends PessoaDAO
             $this->conn = new PDO('sqlite:' . __DIR__ . '/pessoas.db');
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $this->conn->prepare('UPDATE pessoa SET nome=:nome,altura=:altura,peso=:peso 
+            $stmt = $this->conn->prepare('UPDATE pessoa SET nome=:nome,altura=:altura,peso=:peso,email=:email,telefone=:telefone
                   WHERE id=:id');
             $stmt->execute(
                 array(
                     ':nome' => $objeto->nome,
                     ':altura' => $objeto->altura,
                     ':peso' => $objeto->peso,
+                    ':email' =>$objeto->email,
+                    ':telefone' =>$objeto->telefone,
                     ':id' => $objeto->id
                 )
             );
@@ -131,6 +135,8 @@ class PDOPessoaDAO extends PessoaDAO
                 $pessoa['nome'] = $linha['nome'];
                 $pessoa['altura'] = $linha['altura'];
                 $pessoa['peso'] = $linha['peso'];
+                $pessoa['email'] = $linha['email'];
+                $pessoa['telefone'] = $linha['telefone'];
                 array_push($dados, $pessoa);
             }
         } catch (PDOException $e) {
@@ -150,7 +156,7 @@ class PDOPessoaDAO extends PessoaDAO
             $this->conn = new PDO('sqlite:' . __DIR__ . '/pessoas.db');
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $result = $this->conn->query("SELECT * FROM pessoa " + filtro);
+            $result = $this->conn->query("SELECT * FROM pessoa " . $filtro);
 
             while ($linha = $result->fetch(PDO::FETCH_ASSOC)) {
                 $pessoa = array();
@@ -158,6 +164,8 @@ class PDOPessoaDAO extends PessoaDAO
                 $pessoa['nome'] = $linha['nome'];
                 $pessoa['altura'] = $linha['altura'];
                 $pessoa['peso'] = $linha['peso'];
+                $pessoa['email'] = $linha['email'];
+                $pessoa['telefone'] = $linha['telefone'];
                 array_push($dados, $pessoa);
             }
         } catch (PDOException $e) {
@@ -187,6 +195,8 @@ class PDOPessoaDAO extends PessoaDAO
                 $pessoa['nome'] = $linha['nome'];
                 $pessoa['altura'] = $linha['altura'];
                 $pessoa['peso'] = $linha['peso'];
+                $pessoa['email'] = $linha['email'];
+                $pessoa['telefone'] = $linha['telefone'];
             }
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();

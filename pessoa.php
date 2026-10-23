@@ -11,6 +11,8 @@ class Pessoa{
     public $idade;
     public $peso;
     public $altura;
+    public $email;
+    public $telefone;
 
     public function Pessoa(){
 
